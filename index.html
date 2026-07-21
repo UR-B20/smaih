@@ -1,4 +1,4 @@
-<title>SMA Innovation Huddle</title>
+<title>Capability Showcase</title>
 <style>
   /* ============ FONTS ============ */
   @font-face {
@@ -689,6 +689,30 @@
   }
   .callouts strong { color: var(--ink); font-weight: 600; }
 
+  /* roadmap */
+  .road-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 10px;
+  }
+  .road-meta {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    color: var(--faint);
+    margin-top: 4px;
+  }
+  .dev-tag {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 2px 7px;
+    border-radius: 4px;
+    background: rgba(229,161,61,0.15);
+    color: var(--amber);
+    font-size: 9.5px;
+    letter-spacing: 0.1em;
+  }
+
   /* pull quote */
   .pull {
     margin: 44px 0;
@@ -892,30 +916,6 @@
   .feature-card li b { color: var(--ink); font-weight: 600; }
 
   /* ============ FOOTER ============ */
-  .ask {
-    margin: 24px 0 0;
-    padding: 36px 28px;
-    text-align: center;
-    background: var(--bg-deep);
-    border-top: 1px solid var(--line);
-  }
-  .ask h3 {
-    font-family: var(--display);
-    font-weight: 400;
-    font-size: clamp(28px, 6.5vw, 40px);
-    line-height: 1.1;
-    text-wrap: balance;
-  }
-  .ask h3 em {
-    font-style: normal;
-    color: var(--brass-bright);
-  }
-  .ask p {
-    margin: 14px auto 0;
-    max-width: 46ch;
-    color: var(--muted);
-    font-size: 15px;
-  }
   .foot {
     padding: 22px 20px 34px;
     text-align: center;
@@ -960,7 +960,7 @@
   <section class="hero" id="top">
     <div class="wrap">
       <div class="hero-frame corners">
-        <p class="eyebrow">SMA Innovation Huddle</p>
+        <p class="eyebrow">15C4I</p>
         <h1>Innovation Projects <span class="accent">Capability Showcase</span></h1>
         <p class="standfirst">Three tools built inside the unit to move reporting, follow-up and readiness checks out of chat threads — and into systems of record.</p>
         <p class="meta">21 JULY 2026 · OFFICIAL (OPEN)</p>
@@ -1027,22 +1027,79 @@
       </div>
 
       <div class="block reveal">
-        <p class="block-label">The workflow — tap each stage</p>
+        <p class="block-label">The digital workflow — tap each step</p>
         <div class="pipeline" id="ips-pipeline">
           <button class="pipe-stage active">
-            <span class="stage-top"><span class="stage-name">FormSG</span><span class="stage-role">Structured intake</span></span>
-            <p>Every report comes in through one standard form — complete, consistent, and timestamped the moment it is submitted.</p>
+            <span class="stage-top"><span class="stage-name">01 · Report submitted</span><span class="stage-role">FormSG</span></span>
+            <p>A structured form, accessible to all personnel via Singpass — no Microsoft 365 account needed to initiate a report.</p>
           </button>
           <div class="pipe-connector">▼</div>
           <button class="pipe-stage">
-            <span class="stage-top"><span class="stage-name">SharePoint List</span><span class="stage-role">System of record</span></span>
-            <p>Every case lands in a single list with its full history — recorded once, kept for good.</p>
+            <span class="stage-top"><span class="stage-name">02 · CSM notification &amp; review</span><span class="stage-role">Automatic</span></span>
+            <p>The form routes itself to the CSM for review, recommendation and electronic signature.</p>
           </button>
           <div class="pipe-connector">▼</div>
           <button class="pipe-stage">
-            <span class="stage-top"><span class="stage-name">Dashboard View</span><span class="stage-role">Deliberation &amp; oversight</span></span>
-            <p>Current and prior cases at a glance — supporting deliberation and downstream coordination with duty planners and indenters.</p>
+            <span class="stage-top"><span class="stage-name">03 · Automated distribution</span><span class="stage-role">Plumber</span></span>
+            <p>Role-specific slices go out as targeted notifications — the OC gets the summary, the Duty Planner the schedule details, the Ration Indenter the confinement logistics. No manual messaging.</p>
           </button>
+          <div class="pipe-connector">▼</div>
+          <button class="pipe-stage">
+            <span class="stage-top"><span class="stage-name">04 · Secure record update</span><span class="stage-role">SharePoint</span></span>
+            <p>Data is written to a commanders-only record where punishments are logged — including date served — and tracked through completion.</p>
+          </button>
+        </div>
+      </div>
+
+      <div class="block reveal">
+        <p class="block-label">The roadmap</p>
+        <div class="road-grid">
+          <div class="prob-card">
+            <span class="num">01</span>
+            <div>
+              <h4>Digitalise current process</h4>
+              <p class="road-meta">FormSG + Plumber</p>
+            </div>
+          </div>
+          <div class="prob-card">
+            <span class="num">02</span>
+            <div>
+              <h4>Manage &amp; automate</h4>
+              <p class="road-meta">Power Automate + SharePoint Lists</p>
+            </div>
+          </div>
+          <div class="prob-card">
+            <span class="num">03</span>
+            <div>
+              <h4>Dashboard</h4>
+              <p class="road-meta">Teams + Power BI<span class="dev-tag">IN DEVELOPMENT</span></p>
+            </div>
+          </div>
+          <div class="prob-card">
+            <span class="num">04</span>
+            <div>
+              <h4>Copilot agent</h4>
+              <p class="road-meta">Copilot<span class="dev-tag">IN DEVELOPMENT</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="block reveal">
+        <p class="block-label">Where it helps</p>
+        <div class="pain-grid">
+          <div class="pain-card">
+            <h4>Dispersed units (KINs, SSP)</h4>
+            <p>CSM visibility no longer relies on seeing a WhatsApp message.</p>
+          </div>
+          <div class="pain-card">
+            <h4>Evergreen units</h4>
+            <p>Flags personnel approaching ORD with outstanding punishments.</p>
+          </div>
+          <div class="pain-card">
+            <h4>Change of command</h4>
+            <p>The incoming commander gets the full historical picture — without relying on predecessor memory.</p>
+          </div>
         </div>
       </div>
 
@@ -1052,11 +1109,11 @@
           <p class="ob-head">No build effort is required from the unit.</p>
           <p class="ob-sub">What your unit provides</p>
           <ul class="ob-list">
-            <li><b>Documented current process</b> and appointments</li>
-            <li>A new or existing <b>Teams environment</b></li>
-            <li>The <b>commanders requiring access</b></li>
+            <li>Your <b>current documented process</b></li>
+            <li>A list of <b>authorised commanders</b></li>
             <li>A <b>unit POC</b></li>
           </ul>
+          <p class="ob-note">✓ Secure &amp; scalable — runs on Mindef M365 (cleared to Restricted) and scales across unit types without a system rebuild.</p>
         </div>
       </div>
     </div>
@@ -1367,22 +1424,14 @@
       <div class="block reveal">
         <p class="block-label">Onboarding</p>
         <div class="onboard corners">
-          <p class="ob-head">Under development — trial units wanted.</p>
-          <p class="ob-text">Expressions of interest to participate as a trial unit may be registered with the POC.</p>
+          <p class="ob-head">Under development.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ CLOSE ============ -->
-  <section class="ask">
-    <div class="wrap">
-      <h3>What stood out — <em>and what worries you?</em></h3>
-      <p>These tools can still be shaped before they go wider. Bring your questions, ideas and gripes to the huddle.</p>
-    </div>
-  </section>
   <footer class="foot">
-    SMA INNOVATION HUDDLE · 15C4I · 21 JUL 2026 · <span class="mark">OFFICIAL (OPEN)</span>
+    15C4I · 21 JUL 2026 · <span class="mark">OFFICIAL (OPEN)</span>
   </footer>
 </main>
 
