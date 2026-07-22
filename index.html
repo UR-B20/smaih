@@ -762,67 +762,134 @@
     color: var(--muted);
   }
 
-  .phase-track {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 6px;
-  }
-  @media (max-width: 480px) {
-    .phase-track { grid-template-columns: 1fr; }
-  }
-  .phase {
-    padding: 14px 12px;
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    text-align: left;
-    transition: border-color 0.2s, background 0.2s;
-  }
-  .phase .pn {
+  /* smartcheck life-cycle timeline */
+  .tl-times {
+    display: flex;
+    justify-content: space-between;
     font-family: var(--mono);
     font-size: 10px;
     letter-spacing: 0.14em;
+    text-transform: uppercase;
     color: var(--faint);
+    margin-bottom: 12px;
   }
-  .phase .pt {
+  .tl-track {
+    position: relative;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--raised);
+    margin-bottom: 36px;
+  }
+  .tl-fill {
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--blue) 0 70%, var(--brass) 70% 96%, var(--red) 96% 100%);
+    clip-path: inset(0 100% 0 0 round 999px);
+    transition: clip-path 0.9s ease;
+  }
+  .tl-node {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .tl-node i {
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--faint);
+  }
+  .tl-node em {
+    position: absolute;
+    top: 13px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--mono);
+    font-style: normal;
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    color: var(--faint);
+    white-space: nowrap;
+  }
+  .tl-head {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translate(-50%, -50%);
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--ink);
+    border: 4px solid var(--brass);
+    box-shadow: 0 0 0 3px rgba(212, 167, 44, 0.18);
+    transition: left 0.9s ease;
+  }
+  .tl-steps {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+  }
+  .tl-step {
+    padding: 8px 2px;
+    text-align: center;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
     font-family: var(--display);
-    font-size: 18px;
+    font-size: 13.5px;
     letter-spacing: 0.03em;
-    margin-top: 2px;
+    color: var(--muted);
+    transition: border-color 0.2s, background 0.2s;
   }
-  .phase.active { border-color: var(--brass); background: var(--raised); }
-  .phase.active .pn { color: var(--brass); }
-  .phase-detail {
+  @media (max-width: 480px) {
+    .tl-step { font-size: 11.5px; padding: 7px 1px; }
+  }
+  .tl-step.active {
+    border-color: var(--brass);
+    background: var(--brass-dim);
+    color: var(--brass-bright);
+  }
+  .tl-detail {
     margin-top: 12px;
     padding: 18px 20px;
     background: var(--surface);
     border: 1px solid var(--line);
     border-radius: var(--radius);
+    min-height: 132px;
     font-size: 14.5px;
     color: var(--muted);
-    min-height: 96px;
   }
-  .phase-detail strong { color: var(--ink); }
-
-  .legend {
+  .tl-detail strong { color: var(--ink); }
+  .tl-tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    padding: 4px 9px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  .tl-tag.navy { background: rgba(91, 141, 217, 0.15); color: var(--blue); }
+  .tl-tag.gold { background: var(--brass-dim); color: var(--brass-bright); }
+  .tl-tag.redf { background: rgba(232, 84, 84, 0.15); color: var(--red); }
+  .tl-outcomes {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px 20px;
-    margin-top: 14px;
+    gap: 6px;
+    margin-top: 12px;
+  }
+  .tl-outcomes span {
     font-family: var(--mono);
-    font-size: 10.5px;
-    letter-spacing: 0.1em;
-    color: var(--faint);
+    font-size: 9.5px;
+    letter-spacing: 0.08em;
+    padding: 4px 8px;
+    border-radius: 4px;
   }
-  .legend span { display: flex; align-items: center; gap: 7px; }
-  .legend i {
-    width: 10px; height: 10px;
-    border-radius: 3px;
-    display: inline-block;
-  }
-  .legend .l-navy { background: var(--blue); }
-  .legend .l-gold { background: var(--brass); }
-  .legend .l-red { background: var(--red); }
+  .tl-outcomes .oc-done { background: rgba(83, 185, 141, 0.15); color: var(--green); }
+  .tl-outcomes .oc-skip { background: rgba(229, 161, 61, 0.15); color: var(--amber); }
+  .tl-outcomes .oc-miss { background: rgba(232, 84, 84, 0.15); color: var(--red); }
 
   .outcome-grid {
     display: grid;
@@ -950,6 +1017,7 @@
   @media (prefers-reduced-motion: reduce) {
     .reveal { opacity: 1; transform: none; transition: none; }
     .pipe-stage p { transition: none; }
+    .tl-fill, .tl-head { transition: none; }
   }
 </style>
 
@@ -1297,19 +1365,23 @@
       </div>
 
       <div class="block reveal">
-        <p class="block-label">The scheduled life cycle — tap each phase</p>
-        <div class="phase-track" id="phase-track" role="tablist" aria-label="Life cycle phases">
-          <button class="phase active" role="tab" aria-selected="true"><span class="pn">PHASE 1</span><span class="pt">Issued to phones</span></button>
-          <button class="phase" role="tab" aria-selected="false"><span class="pn">PHASE 2</span><span class="pt">Active window</span></button>
-          <button class="phase" role="tab" aria-selected="false"><span class="pn">PHASE 3</span><span class="pt">Window expires</span></button>
-        </div>
-        <div class="phase-detail" id="phase-detail">
-          <strong>Issued to phones.</strong> An administrator defines the schedule — daily, weekly, monthly, or specific time zones. The check is issued to assigned personnel's phones and is only visible during the scheduled window.
-        </div>
-        <div class="legend">
-          <span><i class="l-navy"></i>NAVY — SCHEDULED / ACTIVE</span>
-          <span><i class="l-gold"></i>GOLD — ACTION REQUIRED</span>
-          <span><i class="l-red"></i>RED — FLAG / MISSED</span>
+        <p class="block-label">The scheduled life cycle — one window, start to finish</p>
+        <div class="tl">
+          <div class="tl-times"><span>Window opens</span><span>Deadline</span></div>
+          <div class="tl-track" aria-hidden="true">
+            <div class="tl-fill" id="tl-fill"></div>
+            <span class="tl-node" style="left: 70%;"><i></i><em>T–120</em></span>
+            <span class="tl-node" style="left: 96%;"><i></i><em>T–60</em></span>
+            <span class="tl-head" id="tl-head"></span>
+          </div>
+          <div class="tl-steps" id="tl-steps" role="tablist" aria-label="Life cycle stages">
+            <button class="tl-step active" role="tab" aria-selected="true">Scheduled</button>
+            <button class="tl-step" role="tab" aria-selected="false">Issued</button>
+            <button class="tl-step" role="tab" aria-selected="false">Active</button>
+            <button class="tl-step" role="tab" aria-selected="false">Nudges</button>
+            <button class="tl-step" role="tab" aria-selected="false">Close-out</button>
+          </div>
+          <div class="tl-detail" id="tl-detail"></div>
         </div>
       </div>
 
@@ -1544,23 +1616,41 @@
     wireTabs('.screen-tab', '.screen-panel');
     wireTabs('.role-tab', '.role-panel');
 
-    /* ---- SmartCheck phases ---- */
-    var phaseData = [
-      '<strong>Issued to phones.</strong> An administrator defines the schedule — daily, weekly, monthly, or specific time zones. The check is issued to assigned personnel’s phones and is only visible during the scheduled window.',
-      '<strong>Active window.</strong> The team completes the check on mobile, page by page. Photographs attach directly to any issue raised, every question is mandatory, and completion is collaborative — with per-question attribution.',
-      '<strong>Window expires.</strong> Live states transition to finalised states. The system automatically marks and flags “Missed” checks the moment the scheduled window closes.'
+    /* ---- SmartCheck life-cycle timeline ---- */
+    var tlData = [
+      { tag: 'NAVY \u00b7 SCHEDULED', cls: 'navy', p: 0, text: '<strong>Scheduled.</strong> An administrator sets the pattern \u2014 daily, twice-a-day, weekly, monthly, one-time or open. Windows live in agency time and may span midnight. Outside the window, the check stays off everyone\u2019s phones.' },
+      { tag: 'NAVY \u00b7 ACTIVE', cls: 'navy', p: 8, text: '<strong>Issued to phones.</strong> The window opens and the check appears on assigned personnel\u2019s phones \u2014 visible only during the window, with a live countdown to the deadline.' },
+      { tag: 'NAVY \u00b7 ACTIVE', cls: 'navy', p: 50, text: '<strong>Active window.</strong> The team completes the check on mobile, page by page \u2014 photos attach to issues, every question is mandatory, and each answer carries per-question attribution. Redo any time before the deadline.' },
+      { tag: 'GOLD \u00b7 ACTION REQUIRED', cls: 'gold', p: 85, text: '<strong>Deadline nudges.</strong> Still unsubmitted? Webhooks fire at T\u2013120 and a mailing-list email goes out at T\u201360 \u2014 gold means the clock is running down.' },
+      { tag: 'RED \u00b7 FLAG / MISSED', cls: 'redf', p: 100, text: '<strong>Window expires.</strong> Live states finalise automatically \u2014 and unsubmitted checks are flagged as Missed. A reason is mandatory for misses and skips.', outcomes: true }
     ];
-    var phases = Array.prototype.slice.call(document.querySelectorAll('#phase-track .phase'));
-    var phaseDetail = document.getElementById('phase-detail');
-    phases.forEach(function (p, i) {
-      p.addEventListener('click', function () {
-        phases.forEach(function (q, j) {
-          q.classList.toggle('active', q === p);
-          q.setAttribute('aria-selected', q === p ? 'true' : 'false');
-        });
-        phaseDetail.innerHTML = phaseData[i];
+    var tlSteps = Array.prototype.slice.call(document.querySelectorAll('#tl-steps .tl-step'));
+    var tlFill = document.getElementById('tl-fill');
+    var tlHead = document.getElementById('tl-head');
+    var tlDetail = document.getElementById('tl-detail');
+    var tlIdx = 0, tlTimer = null;
+    function renderTl(i) {
+      tlIdx = i;
+      var d = tlData[i];
+      tlSteps.forEach(function (s, j) {
+        s.classList.toggle('active', j === i);
+        s.setAttribute('aria-selected', j === i ? 'true' : 'false');
+      });
+      tlFill.style.clipPath = 'inset(0 ' + (100 - d.p) + '% 0 0 round 999px)';
+      tlHead.style.left = d.p + '%';
+      tlDetail.innerHTML = '<span class="tl-tag ' + d.cls + '">' + d.tag + '</span><div>' + d.text + '</div>' +
+        (d.outcomes ? '<div class="tl-outcomes"><span class="oc-done">\u2713 COMPLETED</span><span class="oc-skip">SKIPPED \u00b7 REASON LOGGED</span><span class="oc-miss">MISSED \u00b7 FLAGGED</span></div>' : '');
+    }
+    tlSteps.forEach(function (s, i) {
+      s.addEventListener('click', function () {
+        if (tlTimer) { clearInterval(tlTimer); tlTimer = null; }
+        renderTl(i);
       });
     });
+    if (!reduceMotion) {
+      tlTimer = setInterval(function () { renderTl((tlIdx + 1) % tlData.length); }, 3400);
+    }
+    renderTl(0);
 
   })();
 </script>
